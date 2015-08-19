@@ -8,7 +8,9 @@
 # ---------------------------------
 #   General Dovecot configuration
 # ---------------------------------
-
+dovecot_mail_user: vmail
+dovecot_mailbox_directory: /var/{{dovecot_mail_user}}
+dovecot_dict_service_user: 'root'
 
 # .. envvar:: dovecot_protocols
 #
@@ -38,10 +40,21 @@ dovecot_dependencies: True
 #
 # User account lookup. So far supported are:
 #
-# - ``system``: Mail users are Linux system users
+# - ``system``, ``sql``: Mail users are Linux system users
 #
 dovecot_user_accounts: [ 'system' ]
 
+dovecot_sql_driver: 'mysql'
+dovecot_sql_password_length: '20'
+dovecot_sql_host: 'localhost'
+dovecot_sql_dbname: ''
+dovecot_sql_username: ''
+dovecot_sql_password: ''
+
+dovecot_mailbox_user_id: 5000
+dovecot_mailbox_group_id: 5000
+
+dovecot_mail_plugins: []
 
 # .. envvar:: dovecot_deny_users
 #
